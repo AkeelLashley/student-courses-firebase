@@ -2,7 +2,7 @@
 import { GoogleAuthProvider } from "firebase/auth";
 import { auth } from "./firebase.config";
 
-import { createUserProfileDocument } from "./firestore.utils";
+import { createUserProfileDocument } from "../../api/user.firestore";
 import { UserAuthType } from "../../types/userAuth.types";
 
 export const signInWithGoogle = async (

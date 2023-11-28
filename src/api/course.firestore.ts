@@ -1,40 +1,14 @@
-import { UserAuthType } from "../../types/userAuth.types";
 import {
-  doc,
   collection,
-  getDocs,
   addDoc,
+  getDocs,
+  doc,
   updateDoc,
   deleteDoc,
   getDoc,
-  setDoc,
 } from "firebase/firestore";
-import { firestore } from "./firebase.config";
-import { CourseType } from "../../types/course.types";
-
-export const createUserProfileDocument = async (user: UserAuthType | null) => {
-  if (!user) return undefined;
-
-  const userRef = doc(firestore, `users/${user.uid}`);
-  const snapShot = await getDoc(userRef);
-
-  if (!snapShot.exists()) {
-    const { displayName, email } = user;
-    const createdAt = new Date();
-    try {
-      await setDoc(userRef, {
-        displayName,
-        email,
-        createdAt,
-      });
-    } catch (error) {
-      console.error("Error creating user", error);
-    }
-  }
-
-  return userRef;
-};
-
+import { CourseType } from "../types/course.types";
+import { firestore } from "../utils/firebase/firebase.config";
 
 export const addCourse = async (userId: string, courseData: CourseType) => {
   const userCoursesRef = collection(firestore, `users/${userId}/courses`);
@@ -45,7 +19,6 @@ export const addCourse = async (userId: string, courseData: CourseType) => {
     console.error("Error adding course", error);
   }
 };
-
 
 export const getCourses = async (userId: string) => {
   const userCoursesRef = collection(firestore, `users/${userId}/courses`);

@@ -2,11 +2,7 @@ import { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
-import {
-  addCourse,
-  getCourses,
-  deleteCourse,
-} from "../utils/firebase/firestore.utils";
+import { addCourse, getCourses, deleteCourse } from "../api/user.firestore";
 import { useAuth } from "../context/AuthContext";
 import { CourseType } from "../types/course.types";
 

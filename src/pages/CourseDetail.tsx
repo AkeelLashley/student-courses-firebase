@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getCourse } from "../utils/firebase/firestore.utils";
+import { getCourse } from "../api/user.firestore";
 import { useAuth } from "../context/AuthContext";
 import { CourseType } from "../types/course.types";
 
